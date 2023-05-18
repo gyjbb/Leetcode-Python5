@@ -68,6 +68,30 @@ class Solution(object):
 [video link](https://www.bilibili.com/video/BV1ba411S7wu/?spm_id_from=pageDriver&vd_source=63f26efad0d35bcbb0de794512ac21f3)\
 We can use **set** to solve this question. Because the integers in the two arrays can be very large, and it's better to use set than array(as in the last question).\
 Everytime you need to check if an item appears in a collection of data, can think of using hash table to solve the question.\
+```python
+# Ways 1: use dictionary and set
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    # 使用哈希表存储一个数组中的所有元素
+        table = {}
+        for num in nums1:
+            table[num] = table.get(num, 0) + 1
+        
+        # 使用集合存储结果
+        res = set()
+        for num in nums2:
+            if num in table:
+                res.add(num)
+                del table[num]
+        
+        return list(res)
+```
+```python
+# Ways 2: use set
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        return list(set(nums1) & set(nums2))
+```
 
 
 #### 350
