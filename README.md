@@ -144,7 +144,7 @@ class Solution:
 ## 1. Two Sum
 [Reading](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0001.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.md)\
 In this question, we not only need to find if a number and (target-number) appear in the collection of data, but also need to know the index of the number to return. This is a key-value pair question, and we can use **map** to build the hash table structure.\
-Map can be used to quickly search if the key in map appears before, so we use the number as the map's key, and use the index of the number as the the map's value.
+Map can be used to quickly search if the key in map appears before, so we use the number as the map's key, and use the index of the number as the map's value.
  ```python
 # Ways 1: use set()
 class Solution:
