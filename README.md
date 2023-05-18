@@ -15,8 +15,8 @@ There are 3 data type that can work with hash table: array, set, map.\
 
 ## 242. Valid Anagram
 [Leetcode Link](https://leetcode.com/problems/valid-anagram/)\
-Two strings are made with the same charaters, order may be different.\
-Use **arrays** to build hash table here. For limited number of hash values, use array. If the number of hash values is too large, use **set**. If needs key value pair, use **map**.
+Two strings are made with the same characters, order may be different.\
+Use **arrays** to build a hash table here. For a limited number of hash values, use an array. If the number of hash values is too large, use **set**. If you need key value pairs, use **map**.
 ```python
 # Ways 1: use hash table and arrays
 class Solution:
