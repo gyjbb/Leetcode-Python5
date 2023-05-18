@@ -1,5 +1,5 @@
 # Leetcode-Python5
-## Hash Table Theory, 242. Valid Anagram
+## Hash Table Theory, 242. Valid Anagram, 349. Intersection of Two Arrays
 
 May 17, 2023  4h
 
@@ -14,5 +14,68 @@ There are 3 data type that can work with hash table: array, set, map.\
 但是哈希法也是牺牲了空间换取了时间，因为我们要使用额外的数组，set或者是map来存放数据，才能实现快速的查找。
 
 ## 242. Valid Anagram
+[Leetcode Link](https://leetcode.com/problems/valid-anagram/)\
 Two strings are made with the same charaters, order may be different.\
-Use arrays to build hash table.
+Use **arrays** to build hash table here. For limited number of hash values, use array. If the number of hash values is too large, use **set**. If needs key value pair, use **map**.
+```python
+# Ways 1: use hash table and arrays
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        record = [0] * 26
+        for i in s:
+            #并不需要记住字符a的ASCII，只要求出一个相对数值就可以了
+            record[ord(i) - ord("a")] += 1
+        for i in t:
+            record[ord(i) - ord("a")] -= 1
+        for i in range(26):
+            if record[i] != 0:
+                #record数组如果有的元素不为零0，说明字符串s和t 一定是谁多了字符或者谁少了字符。
+                return False
+        return True
+```
+```python
+# Ways 2: use dictionary
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        from collections import defaultdict
+        
+        s_dict = defaultdict(int)
+        t_dict = defaultdict(int)
+        for x in s:
+            s_dict[x] += 1
+        
+        for x in t:
+            t_dict[x] += 1
+        return s_dict == t_dict
+```
+```python
+# Ways 3: use Counter function
+class Solution(object):
+    def isAnagram(self, s: str, t: str) -> bool:
+        from collections import Counter
+        a_count = Counter(s)
+        b_count = Counter(t)
+        return a_count == b_count
+```
+
+
+#### 383
+#### 49
+#### 438
+
+## 349. Intersection of Two Arrays
+[Leetcode link](https://leetcode.com/problems/intersection-of-two-arrays/)\
+[video link](https://www.bilibili.com/video/BV1ba411S7wu/?spm_id_from=pageDriver&vd_source=63f26efad0d35bcbb0de794512ac21f3)\
+We can use **set** to solve this question. Because the integers in the two arrays can be very large, and it's better to use set than array(as in the last question).\
+Everytime you need to check if an item appears in a collection of data, can think of using hash table to solve the question.\
+
+
+#### 350
+
+
+
+
+
+
+
+
