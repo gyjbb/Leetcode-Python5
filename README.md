@@ -1,5 +1,5 @@
 # Leetcode-Python5
-## Hash Table Theory, 242. Valid Anagram, 349. Intersection of Two Arrays
+## Hash Table Theory, 242. Valid Anagram, 349. Intersection of Two Arrays, 202. Happy Number
 
 May 17, 2023  4h
 
@@ -67,7 +67,7 @@ class Solution(object):
 [Leetcode link](https://leetcode.com/problems/intersection-of-two-arrays/)\
 [video link](https://www.bilibili.com/video/BV1ba411S7wu/?spm_id_from=pageDriver&vd_source=63f26efad0d35bcbb0de794512ac21f3)\
 We can use **set** to solve this question. Because the integers in the two arrays can be very large, and it's better to use set than array(as in the last question).\
-Everytime you need to check if an item appears in a collection of data, can think of using hash table to solve the question.\
+Everytime you need to check if an item appears in a collection of data, can think of using hash table to solve the question.
 ```python
 # Ways 1: use dictionary and set
 class Solution:
@@ -95,6 +95,58 @@ class Solution:
 
 
 #### 350
+
+
+## 202. Happy Number
+[Leetcode link](https://leetcode.com/problems/happy-number/)\
+[Reading](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0202.%E5%BF%AB%E4%B9%90%E6%95%B0.md)\
+A number is happy number if the sum of the squre of all digits finally equals to 1.
+```python
+# Ways 1: use set
+class Solution:
+   def isHappy(self, n: int) -> bool:
+       record = set()
+       while n not in record:
+           record.add(n)
+           new_num = 0
+           n_str = str(n)
+           for i in n_str:
+               new_num+=int(i)**2
+           if new_num==1: return True
+           else: n = new_num
+       return False
+```
+```python
+# Ways 2: a simpler way to use set
+class Solution:
+   def isHappy(self, n: int) -> bool:
+       seen = set()
+       while n != 1:
+           n = sum(int(i) ** 2 for i in str(n))
+           if n in seen:
+               return False
+           seen.add(n)
+       return True
+ ```
+ ```python
+ # Ways 3: use array
+ class Solution:
+   def isHappy(self, n: int) -> bool:
+       seen = []
+       while n != 1:
+           n = sum(int(i) ** 2 for i in str(n))
+           if n in seen:
+               return False
+           seen.append(n)
+       return True
+ ```
+
+
+
+
+
+
+
 
 
 
